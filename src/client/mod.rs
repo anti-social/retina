@@ -817,11 +817,12 @@ impl Tool {
     /// Returns if the given tool is known to be a live555 version that causes
     /// the stale TCP sessions described at [`SessionGroup`].
     pub fn has_live555_tcp_bug(&self) -> bool {
-        if let Some(version) = self.0.strip_prefix("LIVE555 Streaming Media v") {
-            version > "0000.00.00" && version < "2017.06.04"
-        } else {
-            false
-        }
+        false
+        // if let Some(version) = self.0.strip_prefix("LIVE555 Streaming Media v") {
+        //     version > "0000.00.00" && version < "2017.06.04"
+        // } else {
+        //     false
+        // }
     }
 }
 
