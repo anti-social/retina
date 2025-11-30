@@ -681,7 +681,11 @@ impl InternalParameters {
         let mut pps_nal = None;
         let mut vps_nal = None;
         for p in format_specific_params.split(';') {
-            match p.trim().split_once('=') {
+            let p = p.trim();
+            if p.is_empty() {
+                continue;
+            }
+            match p.split_once('=') {
                 Some(("tx-mode", "SRST")) => {}
                 Some(("tx-mode", v)) => {
                     return Err(format!("unsupported/unexpected tx-mode {v}; expected SRST"));
